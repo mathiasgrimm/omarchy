@@ -30,14 +30,17 @@ jobs:
           ref: refs/heads/${{ github.event.pull_request.base.ref }}
           persist-credentials: false
 
-      # To always skip files, add their paths or gitignore-style patterns to
-      # .glimpseignore and commit it.
-      # To accept current images unchanged until their contents change, run from
-      # the repository root (replace path/to/images with their directory):
-      #   cpx mathiasgrimm/glimpse-cli analyze path/to/images --update-baseline
-      # This accepts all successfully analyzed images in that directory;
-      # --update-baseline requires a directory, not an individual file.
-      # Commit .glimpse-baseline.json with the images you want to keep.
+      # If, after reviewing a PR created by Glimpse, you decide to keep an image
+      # unchanged, restore it and accept the original in the baseline. From the
+      # repository root on that PR's branch, set the image and PR base branch:
+      #   image="path/to/image.png"
+      #   base="origin/HEAD" # Use the PR's base branch if not the default branch.
+      #   git restore --source="$(git merge-base HEAD "$base")" -- "$image"
+      #   cpx mathiasgrimm/glimpse-cli analyze "$(dirname "$image")" --update-baseline
+      # The CLI currently requires a directory, so this also accepts other new
+      # or changed images in that directory; matching baseline entries are skipped.
+      # Commit the restored image and .glimpse-baseline.json to the same PR.
+      # Future runs skip the accepted image until its contents change.
       - name: Check and optimize reported images
         shell: bash
         env:
