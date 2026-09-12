@@ -176,9 +176,9 @@
             "via": "optimize"
         },
         "icon.png": {
-            "size": 223,
-            "xxh128": "2c46ba9914e19c3145efda4efdf82bd1",
-            "via": "optimize"
+            "size": 1555,
+            "xxh128": "96680bebff1f09fc05d0e80664a8cc02",
+            "via": "skip"
         },
         "manual/images/bootloader.webp": {
             "size": 12198,
