@@ -32,11 +32,10 @@ jobs:
 
       # If, after reviewing a PR created by Glimpse, you decide to keep an image
       # unchanged, restore it and accept the original in the baseline. From the
-      # repository root on that PR's branch, set the image and PR base branch:
-      #   image="path/to/image.png"
-      #   base="origin/HEAD" # Use the PR's base branch if not the default branch.
-      #   git restore --source="$(git merge-base HEAD "$base")" -- "$image"
-      #   cpx mathiasgrimm/glimpse-cli analyze "$(dirname "$image")" --update-baseline
+      # repository root on that PR's branch, replace path/to/image.png below:
+      #   git restore --source="$(git merge-base HEAD origin/HEAD)" -- "path/to/image.png"
+      #   cpx mathiasgrimm/glimpse-cli analyze "$(dirname "path/to/image.png")" --update-baseline
+      # Replace origin/HEAD with the PR's base branch if not the default branch.
       # The CLI currently requires a directory, so this also accepts other new
       # or changed images in that directory; matching baseline entries are skipped.
       # Commit the restored image and .glimpse-baseline.json to the same PR.
