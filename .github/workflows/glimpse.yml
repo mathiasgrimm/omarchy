@@ -30,6 +30,14 @@ jobs:
           ref: refs/heads/${{ github.event.pull_request.base.ref }}
           persist-credentials: false
 
+      # To always skip files, add their paths or gitignore-style patterns to
+      # .glimpseignore and commit it.
+      # To accept current images unchanged until their contents change, run from
+      # the repository root (replace path/to/images with their directory):
+      #   cpx mathiasgrimm/glimpse-cli analyze path/to/images --update-baseline
+      # This accepts all successfully analyzed images in that directory;
+      # --update-baseline requires a directory, not an individual file.
+      # Commit .glimpse-baseline.json with the images you want to keep.
       - name: Check and optimize reported images
         shell: bash
         env:
