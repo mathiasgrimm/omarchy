@@ -6,9 +6,9 @@
     ],
     "files": {
         "applications/icons/Basecamp.png": {
-            "size": 76913,
-            "xxh128": "a0ebf48eee55ed9dabd5bf9d9eabbf4b",
-            "via": "optimize"
+            "size": 150653,
+            "xxh128": "35b26932782d30001ce23e5af276c4c9",
+            "via": "skip"
         },
         "applications/icons/Battle.net.png": {
             "size": 4193,
